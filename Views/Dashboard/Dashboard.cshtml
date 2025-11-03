@@ -1,0 +1,188 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+  
+}
+
+
+    <section class="content-header">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <h1><i class="fas fa-home me-2"></i> Dashboard</h1>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <!-- Top Stats Cards -->
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-primary">
+                        <div class="inner">
+                            <h3>250</h3>
+                            <p>Active Patients</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-user-injured"></i>
+                        </div>
+                        <a href="/PatientRecords" class="small-box-footer">View Details <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>47</h3>
+                            <p>Appointments Today</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <a href="/Appointments" class="small-box-footer">View Appointments <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>18</h3>
+                            <p>Pending Lab Results</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-vials"></i>
+                        </div>
+                        <a href="/LabResults" class="small-box-footer">View Labs <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>₱125K</h3>
+                            <p>Outstanding Bills</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <a href="/BillingClaims" class="small-box-footer">View Billing <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i> Monthly Appointments Trend</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="appointmentsChart" height="120"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-secondary text-white">
+                            <h5 class="mb-0"><i class="fas fa-user-md me-2"></i> Active Doctors</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Dr. Cruz
+                                    <span class="badge bg-success">Available</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Dr. Santos
+                                    <span class="badge bg-danger">Busy</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Dr. Villanueva
+                                    <span class="badge bg-success">Available</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Dr. Reyes
+                                    <span class="badge bg-warning">On Leave</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activities -->
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-dark text-white">
+                            <h5 class="mb-0"><i class="fas fa-history me-2"></i> Recent Activities</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Activity</th>
+                                        <th>User</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>10:15 AM</td>
+                                        <td>New patient record added: <strong>Maria Dela Cruz</strong></td>
+                                        <td>Admin</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9:42 AM</td>
+                                        <td>Lab result uploaded for <strong>Juan Perez</strong></td>
+                                        <td>Lab Technician</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9:30 AM</td>
+                                        <td>Appointment scheduled with <strong>Dr. Santos</strong></td>
+                                        <td>Front Desk</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9:00 AM</td>
+                                        <td>Discharge summary completed for <strong>Ana Gomez</strong></td>
+                                        <td>Nurse</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Appointments Chart (Sample Data)
+        const ctx = document.getElementById('appointmentsChart');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                datasets: [{
+                    label: 'Appointments',
+                    data: [120, 150, 180, 140, 190, 210, 250, 230, 260],
+                    borderColor: '#007bff',
+                    backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    </script>
+}

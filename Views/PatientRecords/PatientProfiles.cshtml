@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Patient Profiles";
+   
+}
+
+
+    <!-- Header -->
+    <section class="content-header">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <h1 class="mb-0">Patient Profiles</h1>
+            <a href="/PatientRecords/Create" class="btn btn-primary">
+                <i class="fas fa-user-plus me-1"></i> Add New Patient
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <!-- Search & Filters -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <form class="row g-3">
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" placeholder="Search by name or ID">
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select">
+                                <option value="">All Genders</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select">
+                                <option value="">All Status</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="fas fa-search me-1"></i> Search
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Patient Table -->
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h3 class="card-title"><i class="fas fa-users me-2"></i>Patient List</h3>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-bordered table-striped align-middle">
+                        <thead class="table-secondary">
+                            <tr>
+                                <th>Photo</th>
+                                <th>Patient ID</th>
+                                <th>Full Name</th>
+                                <th>Gender</th>
+                                <th>Birthdate</th>
+                                <th>Age</th>
+                                <th>Contact</th>
+                                <th>Status</th>
+                                <th style="width: 120px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="/img/patients/p1.jpg" alt="Patient" class="img-thumbnail" width="45"></td>
+                                <td>PT-0001</td>
+                                <td>John Doe</td>
+                                <td>Male</td>
+                                <td>1988-02-15</td>
+                                <td>37</td>
+                                <td>+63 912 345 6789</td>
+                                <td><span class="badge bg-success">Active</span></td>
+                                <td>
+                                    <a href="/PatientRecords/Details/1" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                    <a href="/PatientRecords/Edit/1" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><img src="/img/patients/p2.jpg" alt="Patient" class="img-thumbnail" width="45"></td>
+                                <td>PT-0002</td>
+                                <td>Jane Smith</td>
+                                <td>Female</td>
+                                <td>1990-11-22</td>
+                                <td>34</td>
+                                <td>+63 915 222 3344</td>
+                                <td><span class="badge bg-secondary">Inactive</span></td>
+                                <td>
+                                    <a href="/PatientRecords/Details/2" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                    <a href="/PatientRecords/Edit/2" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                </td>
+                            </tr>
+
+                            <!-- Add more sample rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
